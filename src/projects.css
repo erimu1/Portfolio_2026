@@ -7,15 +7,15 @@
 .project-slot{min-width:0;position:relative}
 .project-slot:nth-child(even){margin-top:65px}
 .project-card{height:clamp(330px,47svh,580px);width:100%;position:relative;border-radius:clamp(28px,3vw,46px)}
-.project-card-surface{position:absolute;inset:0;border-radius:inherit;background:#faf9f5;box-shadow:inset 0 0 0 1px #fff9,0 20px 50px -30px #0007;overflow:hidden;transition:background .5s,box-shadow .5s}
+.project-card-surface{position:absolute;inset:0;border-radius:inherit;background:var(--white);box-shadow:inset 0 0 0 1px #fff9,0 20px 50px -30px #0007;overflow:hidden;transition:background .5s,box-shadow .5s}
 .project-card-surface::after{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 35%,#fff9 50%,transparent 65%);transform:translateX(-100%);transition:transform 1.1s var(--ease);pointer-events:none}
-.project-card:hover .project-card-surface{background:#f0f1e8;box-shadow:inset 0 0 0 1px #fff,0 32px 65px -35px #0009}
+.project-card:hover .project-card-surface{background:var(--paper-hover);box-shadow:inset 0 0 0 1px #fff,0 32px 65px -35px #0009}
 .project-card:hover .project-card-surface::after{transform:translateX(100%)}
 .projects-motion .project-slot{animation:project-unfold 1.15s var(--ease) calc(var(--i)*110ms) both}
 .projects-motion .project-card{animation:project-breathe 7s ease-in-out calc(var(--i)*-.9s) infinite}
 .projects-motion .project-slot:nth-child(even) .project-card{animation-direction:reverse}
 .projects-pagination{position:relative;display:flex;justify-content:center;align-items:center;gap:24px;min-height:56px;margin-top:18px}
-.projects-next{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:transparent;padding:0;color:var(--orange)}
+.projects-next{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:transparent;padding:0;color:var(--green)}
 .projects-arrow-circle{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--white)}
 .projects-next-label{display:grid;place-items:center;min-height:52px;padding:0 34px;background:var(--white);border-radius:40px;font-size:13px;transition:background .3s,color .3s}
 .projects-next:hover .projects-next-label{background:var(--green);color:var(--white)}

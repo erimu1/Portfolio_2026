@@ -9,7 +9,7 @@ import "./transitions.css";
 
 type View = "home" | "projects" | "about" | "contact";
 const views: readonly View[] = ["home", "projects", "about", "contact"];
-const phaseLabels = ["Observe", "Explore", "Build", "Evolve"];
+const phaseLabels = ["Observe", "Explore", "Build", "Glorious Evolution"];
 const pageLabels = { home: "Home", projects: "Projects", about: "About", contact: "Contact" };
 // Replace platform URLs with personal profiles when supplied.
 const socialLinks = [
@@ -90,7 +90,7 @@ function App() {
       </header>
       <div className="page-content" inert={menuOpen || isTransitioning}>
         {view === "home" && <section className="home-screen screen" aria-label="Home">
-          <p className="vertical-label">DESIGNED TO EXPLORE. BUILT TO EVOLVE.</p>
+          <p className="vertical-label">DESIGNED TO EXPLORE. GLORIOUS EVOLUTION.</p>
           <div className="phase-row" aria-label="Four stages of a creative process">
             {[360, 270, 180, 90].map((fill, index) => <div key={fill} className={`phase phase-${index}`} style={{ "--fill": `${fill}deg`, "--phase-delay": `${180 + index * 150}ms` } as CSSProperties} role="img" aria-label={`${phaseLabels[index]}: ${["full", "three-quarter", "half", "quarter"][index]} circle`}>
               <div className="phase-disc" aria-hidden="true" />
@@ -125,7 +125,7 @@ function App() {
           <h1 data-page-heading tabIndex={-1}>Curious by nature.<br /><span>Creative by code.</span></h1>
           <div className="about-bottom">
             <div className="about-aside"><div className="about-mark" aria-hidden="true"><span /><span /><span /><span /></div><p className="about-aside-note">CONNECTING THE DOTS<br />BETWEEN DATA & DESIGN.</p><div className="about-disciplines"><span>Data science</span><span>Machine learning</span><span>Creative development</span></div></div>
-            <div className="about-copy"><p>I'm Erim Uludag, a student based in {profile.city}. I explore where data, code, and design meet.</p><p>This is my space to experiment, build things, and keep evolving.</p><div className="education-detail"><span>BACHELOR'S DEGREE</span><strong>{profile.degree}</strong><span>{profile.school}</span></div><button className="text-link" onClick={() => go("contact")}>Let's connect <ArrowUpRight size={20} /></button></div>
+            <div className="about-copy"><p>I'm Erim Uludag, a student based in {profile.city}. I explore where data, code, and design meet.</p><p>A space to experiment, build, and pursue a glorious evolution.</p><div className="education-detail"><span>BACHELOR'S DEGREE</span><strong>{profile.degree}</strong><span>{profile.school}</span></div><button className="text-link" onClick={() => go("contact")}>Let's connect <ArrowUpRight size={20} /></button></div>
           </div>
         </section>}
         {view === "contact" && <Contact />}

@@ -1,17 +1,19 @@
 /* Shared finishing details; geometry and motion preferences stay in the base styles. */
 .site-header{align-items:center}
 .header-signature{margin:0 auto 0 24px;font-size:8px;line-height:1.8;letter-spacing:.14em;color:var(--muted)}
-.header-signature>span{opacity:.65}
+.header-signature>span{opacity:1}
 .view-about .header-signature{color:var(--ink)}
-.view-contact .header-signature{color:#d5e0d9}
+.view-contact .header-signature{color:var(--sage)}
 .header-contact{display:flex;align-items:center;gap:12px;padding:12px 10px;margin-right:12px;font-size:11px;transition:color .25s}
 .header-contact:hover{color:var(--green-light)}
-.view-about .header-contact:hover{color:var(--white)}
+.view-about .header-contact:hover{color:var(--ink);text-decoration:underline;text-underline-offset:5px}
 .orbit-art{transform-origin:center;animation:orbit-spin 14s linear infinite;will-change:transform}
 @keyframes orbit-spin{to{transform:rotate(360deg)}}
 .motion-off .orbit-art{animation-play-state:paused}
-.phase-caption{position:absolute;left:0;right:0;top:calc(100% + 32px);display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:9px;letter-spacing:.08em;text-transform:uppercase;animation:caption-arrive .9s var(--ease) calc(var(--phase-delay) + .4s) both}
-.phase-caption>span:first-child{font-size:8px;color:#8a8790;font-variant-numeric:tabular-nums}
+.phase-caption{position:absolute;left:0;right:0;top:calc(100% + 32px);display:flex;justify-content:space-between;align-items:flex-start;gap:8px;color:var(--muted);font-size:9px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;animation:caption-arrive .9s var(--ease) calc(var(--phase-delay) + .4s) both}
+.phase-caption>span:first-child{font-size:8px;color:var(--muted);font-variant-numeric:tabular-nums}
+.phase-caption>span:last-child{text-align:right;max-width:100%}
+.phase:last-child .phase-caption>span:last-child{color:var(--green-light)}
 @keyframes caption-arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .name-block .eyebrow{display:flex;align-items:center;gap:11px;letter-spacing:.13em}
 .eyebrow-rule{width:24px;height:1px;background:var(--green-light);flex-shrink:0}
@@ -23,12 +25,12 @@
 footer{align-items:center}
 .page-index{display:flex;align-items:center;justify-content:center;gap:5px;position:absolute;left:50%;transform:translateX(-50%)}
 .page-index button{display:grid;place-items:center;width:30px;height:24px;padding:5px 3px}
-.page-index button>span{display:block;width:100%;height:2px;background:currentColor;opacity:.25;transition:opacity .3s,transform .3s}
+.page-index button>span{display:block;width:100%;height:2px;background:currentColor;opacity:.75;transition:opacity .3s,transform .3s}
 .page-index button[aria-current=page]>span{opacity:1;transform:scaleY(2)}
 .page-index button:hover>span{opacity:.8}
 .page-index button:focus-visible{outline-offset:0}
 .about-aside{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
-.about-aside-note{margin:0;font-size:9px;line-height:1.8;letter-spacing:.13em;color:#242328bb}
+.about-aside-note{margin:0;font-size:9px;line-height:1.8;letter-spacing:.13em;color:var(--ink)}
 .about-disciplines{display:flex;flex-wrap:wrap;gap:7px;max-width:350px}
 .about-disciplines>span{padding:8px 12px;border:1px solid #24232840;border-radius:30px;font-size:10px}
 .about-copy .education-detail{padding-block:20px;border-bottom:1px solid #24232840}
@@ -40,9 +42,9 @@ footer{align-items:center}
 .contact-row:nth-child(2){animation-delay:.25s}
 .contact-row:nth-child(3){animation-delay:.35s}
 @keyframes contact-row-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.copy-email{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;border:1px solid #ffffff35;border-radius:50%;color:#d5e0d9;transition:background .25s,color .25s}
+.copy-email{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;border:1px solid #ffffff35;border-radius:50%;color:var(--sage);transition:background .25s,color .25s}
 .copy-email:hover{background:var(--white);color:var(--green)}
-.copy-status{margin:9px 0 0;min-height:16px;max-width:540px;color:#d5e0d9;font-size:10px;line-height:1.5}
+.copy-status{margin:9px 0 0;min-height:16px;max-width:540px;color:var(--sage);font-size:10px;line-height:1.5}
 .portrait-frame{border:1px solid #ffffff35}
 .portrait-frame::after{content:"";position:absolute;inset:9px;border:1px solid #214e3b18;border-radius:24px;pointer-events:none}
 .projects-heading h1{font-size:12px;letter-spacing:.04em}
@@ -75,6 +77,7 @@ footer{align-items:center}
  .header-signature,.header-contact{display:none}
  .phase-caption{top:calc(100% + 21px);font-size:6px;letter-spacing:.06em;justify-content:center}
  .phase-caption>span:first-child{display:none}
+ .phase-caption>span:last-child{text-align:center}
  .phase-row{padding-bottom:9svh}
  .name-block .eyebrow{font-size:8px;letter-spacing:.09em;gap:8px}
  .eyebrow-rule{width:14px}
