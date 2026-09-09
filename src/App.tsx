@@ -5,6 +5,7 @@ import Contact from "./Contact";
 import ScrambleName from "./ScrambleName";
 import { profile } from "./profile";
 import { usePageTransition } from "./usePageTransition";
+import { useMotionPreference } from "./useMotionPreference";
 import "./transitions.css";
 
 type View = "home" | "projects" | "about" | "contact";
@@ -34,7 +35,7 @@ function Logo({ onClick }: { onClick: () => void }) {
 }
 
 function App() {
-  const [motion, setMotion] = useState(() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const { motion, reducedMotion, toggleMotion } = useMotionPreference();
   const [menuOpen, setMenuOpen] = useState(false);
   const { view, navigate, phase, isTransitioning } = usePageTransition<View>("home", motion, views);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -65,6 +66,7 @@ function App() {
   }, [menuOpen]);
 
   useEffect(() => {
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", view === "about" ? "#f5681d" : view === "contact" ? "#214e3b" : "#242328");
     document.title = `Erim Uludag — ${view === "home" ? "Creative portfolio" : view === "projects" ? "Projects" : view === "about" ? "About" : "Contact"}`;
   }, [view]);
 
@@ -80,7 +82,7 @@ function App() {
         <p className="header-signature">DATA, CODE<br /><span>& A LITTLE CURIOSITY.</span></p>
         <div className="header-controls">
           <button className="header-contact" onClick={() => go("contact")}>Let's talk <ArrowUpRight size={15} aria-hidden="true" /></button>
-          <button className="motion-button" onClick={() => setMotion(!motion)} aria-label={motion ? "Pause animations" : "Play animations"} aria-pressed={!motion}>
+          <button className="motion-button" onClick={toggleMotion} disabled={reducedMotion} title={reducedMotion ? "Animations are off to match your device settings" : motion ? "Pause animations" : "Play animations"} aria-label={reducedMotion ? "Animations off: reduced motion enabled" : motion ? "Pause animations" : "Play animations"} aria-pressed={!motion}>
             {motion ? <Pause size={13} /> : <Play size={13} />}<span>{motion ? "Motion on" : "Motion off"}</span>
           </button>
           <button className="menu-button" onClick={() => setMenuOpen(true)} aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="navigation">
@@ -130,7 +132,7 @@ function App() {
         </section>}
         {view === "contact" && <Contact />}
       </div>
-      <footer inert={menuOpen || isTransitioning}><span>ERIM ULUDAG © {new Date().getFullYear()}</span><nav className="page-index" aria-label="Page shortcuts">{views.map(target => <button key={target} onClick={() => go(target)} aria-label={`Go to ${pageLabels[target]}`} aria-current={view === target ? "page" : undefined}><span /></button>)}</nav><span>{view === "home" ? "01 — HOME" : view === "projects" ? "02 — PROJECTS" : view === "about" ? "03 — ABOUT" : "04 — CONTACT"}</span></footer>
+      <footer inert={menuOpen || isTransitioning}><span>ERIM ULUDAG © {new Date().getFullYear()}</span><nav className="page-index" aria-label="Page shortcuts">{views.map(target => <button key={target} onClick={() => go(target)} aria-label={`Go to ${pageLabels[target]}`} aria-current={view === target ? "page" : undefined}><span className="page-index-mark" /><span className="page-index-label" aria-hidden="true">{pageLabels[target]}</span></button>)}</nav><span>{view === "home" ? "01 — HOME" : view === "projects" ? "02 — PROJECTS" : view === "about" ? "03 — ABOUT" : "04 — CONTACT"}</span></footer>
       {menuOpen && <div ref={menuRef} className="navigation-overlay" id="navigation" role="dialog" aria-modal="true" aria-label="Main navigation">
         <div className="navigation-header"><Logo onClick={() => go("home")} /><button className="menu-button" onClick={() => setMenuOpen(false)} aria-label="Close navigation"><span>Close</span><X size={16} /></button></div>
         <nav className="navigation-screen" aria-label="Main navigation">

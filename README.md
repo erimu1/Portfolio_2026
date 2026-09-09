@@ -2,6 +2,8 @@
 
 React + TypeScript portfolio with a responsive home page, an empty animated project gallery, About page, and Contact page.
 
+Live at [erimu1.github.io/Portfolio_2026](https://erimu1.github.io/Portfolio_2026/).
+
 ## Start the site
 
 Run `npm install` once, then `npm run dev`. Open the local URL printed by Vite. For a preview bound to IPv4, run `npm run dev -- --host 127.0.0.1`.
@@ -22,7 +24,8 @@ Run `npm run check` for TypeScript validation and `npm run build` to generate th
 - Page shortcuts appear on every screen and remain visible while scrolling on phones. About fits laptop viewports down to 1280 × 620 without hiding its navigation.
 - Contact includes a copy-email button with confirmation and a fallback message if clipboard access is unavailable.
 - Scrollbars are hidden while mouse-wheel, touch, and keyboard scrolling remain enabled.
-- Motion can be disabled using the header control. System reduced-motion preferences are respected.
+- Motion can be disabled using the header control and the preference is saved locally. Device reduced-motion settings take priority and update immediately when changed. The control still works if browser storage is unavailable.
+- Page shortcuts include hover and keyboard labels, visible focus indicators, and 44-pixel touch targets. Mobile navigation accounts for the device's bottom safe area.
 - Home, Projects, About, and Contact support URL hashes and browser Back/Forward.
 
 ## Content to personalize
