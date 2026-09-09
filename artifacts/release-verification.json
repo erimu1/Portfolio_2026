@@ -1,0 +1,16 @@
+{
+  "results": [
+    "About 1440x900: entire page and navigation fit",
+    "About 1366x768: entire page and navigation fit",
+    "About 1280x720: entire page and navigation fit",
+    "About 1024x768: entire page and navigation fit",
+    "About 1536x864: entire page and navigation fit",
+    "About 1920x1080: entire page and navigation fit",
+    "About 1280x620: entire page and navigation fit",
+    "390x844: all pages navigable, no horizontal overflow",
+    "320x568: all pages navigable, no horizontal overflow",
+    "768x1024: all pages navigable, no horizontal overflow",
+    "Copy email feedback and rotating arrows with Pause support pass"
+  ],
+  "errors": []
+}

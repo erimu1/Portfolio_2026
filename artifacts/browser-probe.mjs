@@ -1,0 +1,14 @@
+﻿import { chromium } from 'playwright';
+import { mkdir, writeFile } from 'node:fs/promises';
+const out = new URL('./', import.meta.url);
+await mkdir(out, { recursive: true });
+const browser = await chromium.launch({channel: 'chrome', headless: true});
+const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+const page = await context.newPage();
+const errors = [];
+page.on('pageerror', error => errors.push(error.message));
+page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+await page.goto('http://127.0.0.1:5173', {waitUntil: 'networkidle'});
+await page.screenshot({path: new URL('readiness-desktop.png', out).pathname.replace(/^\/(\w:)/, '$1'), fullPage: true});
+console.log(JSON.stringify({title: await page.title(), url: page.url(), buttons: await page.getByRole('button').allTextContents(), errors}, null, 2));
+await browser.close();

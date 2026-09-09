@@ -1,0 +1,81 @@
+/*
+ * A pair of diagonal curtains meets across the viewport before the page swaps.
+ * Keep these durations aligned with usePageTransition.ts.
+ */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: auto;
+  contain: strict;
+}
+
+.page-transition--idle {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-transition__panel {
+  position: absolute;
+  inset: -1px;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.page-transition .page-transition__panel {
+  /* The Pause control must not freeze a curtain over the destination. */
+  animation-play-state: running !important;
+}
+
+.page-transition__panel--green {
+  background: var(--green, #214e3b);
+  clip-path: polygon(0 0, 100% 0, 100% 0.4%, 0.4% 100%, 0 100%);
+}
+
+.page-transition__panel--orange {
+  background: var(--orange, #f5681d);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.page-transition--cover .page-transition__panel--green {
+  animation: curtain-green-in 315ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.page-transition--cover .page-transition__panel--orange {
+  animation: curtain-orange-in 350ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.page-transition--reveal .page-transition__panel--green {
+  animation: curtain-green-out 500ms cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.page-transition--reveal .page-transition__panel--orange {
+  animation: curtain-orange-out 460ms cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes curtain-green-in {
+  from { transform: translate3d(-100%, -100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes curtain-orange-in {
+  from { transform: translate3d(100%, 100%, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes curtain-green-out {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-100%, -100%, 0); }
+}
+
+@keyframes curtain-orange-out {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(100%, 100%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { display: none; }
+}
+

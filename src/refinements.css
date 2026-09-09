@@ -1,0 +1,103 @@
+/* Shared finishing details; geometry and motion preferences stay in the base styles. */
+.site-header{align-items:center}
+.header-signature{margin:0 auto 0 24px;font-size:8px;line-height:1.8;letter-spacing:.14em;color:var(--muted)}
+.header-signature>span{opacity:.65}
+.view-about .header-signature{color:var(--ink)}
+.view-contact .header-signature{color:#d5e0d9}
+.header-contact{display:flex;align-items:center;gap:12px;padding:12px 10px;margin-right:12px;font-size:11px;transition:color .25s}
+.header-contact:hover{color:var(--green-light)}
+.view-about .header-contact:hover{color:var(--white)}
+.orbit-art{transform-origin:center;animation:orbit-spin 14s linear infinite;will-change:transform}
+@keyframes orbit-spin{to{transform:rotate(360deg)}}
+.motion-off .orbit-art{animation-play-state:paused}
+.phase-caption{position:absolute;left:0;right:0;top:calc(100% + 32px);display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:9px;letter-spacing:.08em;text-transform:uppercase;animation:caption-arrive .9s var(--ease) calc(var(--phase-delay) + .4s) both}
+.phase-caption>span:first-child{font-size:8px;color:#8a8790;font-variant-numeric:tabular-nums}
+@keyframes caption-arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.name-block .eyebrow{display:flex;align-items:center;gap:11px;letter-spacing:.13em}
+.eyebrow-rule{width:24px;height:1px;background:var(--green-light);flex-shrink:0}
+.explore-arrow>span{padding-bottom:7px;border-bottom:1px solid #ffffff35;transition:border-color .3s}
+.explore-arrow:hover>span,.explore-arrow:focus-visible>span{border-color:var(--green-light)}
+.social-copy strong{font-size:13px}
+.social-links a{transition:color .25s,background .25s,padding .35s var(--ease)}
+.social-links a:hover{padding-inline:9px;background:#ffffff06}
+footer{align-items:center}
+.page-index{display:flex;align-items:center;justify-content:center;gap:5px;position:absolute;left:50%;transform:translateX(-50%)}
+.page-index button{display:grid;place-items:center;width:30px;height:24px;padding:5px 3px}
+.page-index button>span{display:block;width:100%;height:2px;background:currentColor;opacity:.25;transition:opacity .3s,transform .3s}
+.page-index button[aria-current=page]>span{opacity:1;transform:scaleY(2)}
+.page-index button:hover>span{opacity:.8}
+.page-index button:focus-visible{outline-offset:0}
+.about-aside{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.about-aside-note{margin:0;font-size:9px;line-height:1.8;letter-spacing:.13em;color:#242328bb}
+.about-disciplines{display:flex;flex-wrap:wrap;gap:7px;max-width:350px}
+.about-disciplines>span{padding:8px 12px;border:1px solid #24232840;border-radius:30px;font-size:10px}
+.about-copy .education-detail{padding-block:20px;border-bottom:1px solid #24232840}
+.view-about :focus-visible{outline-color:var(--ink)}
+.text-link{position:relative;transition:gap .35s var(--ease)}
+.text-link:hover{gap:42px}
+.contact-row{animation:contact-row-arrive .75s var(--ease) both;transition:background .3s}
+.contact-row:nth-child(1){animation-delay:.15s}
+.contact-row:nth-child(2){animation-delay:.25s}
+.contact-row:nth-child(3){animation-delay:.35s}
+@keyframes contact-row-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.copy-email{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;border:1px solid #ffffff35;border-radius:50%;color:#d5e0d9;transition:background .25s,color .25s}
+.copy-email:hover{background:var(--white);color:var(--green)}
+.copy-status{margin:9px 0 0;min-height:16px;max-width:540px;color:#d5e0d9;font-size:10px;line-height:1.5}
+.portrait-frame{border:1px solid #ffffff35}
+.portrait-frame::after{content:"";position:absolute;inset:9px;border:1px solid #214e3b18;border-radius:24px;pointer-events:none}
+.projects-heading h1{font-size:12px;letter-spacing:.04em}
+.projects-next-label,.projects-arrow-circle{box-shadow:0 4px 20px #0000000a}
+.motion-off .phase-caption,.motion-off .contact-row{animation:none}
+/* Keep the complete About composition and its navigation inside laptop screens. */
+.about-screen{gap:clamp(18px,3svh,30px);padding-block:clamp(20px,3svh,36px)}
+.about-screen h1{font-size:clamp(50px,min(7.2vw,12svh),130px);line-height:.98}
+.about-bottom{gap:8%;align-items:end}
+.about-aside{gap:18px}
+.about-mark{width:clamp(80px,min(11vw,17svh),160px)}
+.about-copy p{margin-bottom:14px;font-size:clamp(13px,1.15vw,18px);line-height:1.55}
+.about-copy p+p{font-size:clamp(12px,1vw,15px)}
+.about-copy .education-detail{padding-block:15px;margin:18px 0 12px;gap:7px}
+.view-about .page-index{color:var(--ink)}
+.page-index button[aria-current=page]>span{border-radius:2px}
+@media(min-width:701px) and (max-height:780px){
+ .about-screen{padding-block:18px;gap:20px}
+ .about-screen h1{font-size:clamp(48px,min(6.8vw,11svh),95px)}
+ .about-mark{width:clamp(70px,14svh,110px)}
+ .about-aside{gap:15px}
+ .about-copy p{font-size:13px;line-height:1.5;margin-bottom:12px}
+ .about-copy p+p{font-size:12px}
+ .about-copy .education-detail{margin:14px 0 8px;padding-block:12px;gap:6px}
+ .about-disciplines>span{font-size:9px;padding:6px 10px}
+ .about-aside-note{font-size:8px}
+}
+@media(max-width:1000px){.header-signature{margin-left:12px;font-size:7px}.header-contact{margin-right:3px;font-size:10px}.phase-caption{font-size:8px}.about-disciplines>span{font-size:9px}}
+@media(max-width:700px){
+ .header-signature,.header-contact{display:none}
+ .phase-caption{top:calc(100% + 21px);font-size:6px;letter-spacing:.06em;justify-content:center}
+ .phase-caption>span:first-child{display:none}
+ .phase-row{padding-bottom:9svh}
+ .name-block .eyebrow{font-size:8px;letter-spacing:.09em;gap:8px}
+ .eyebrow-rule{width:14px}
+ .social-copy strong{font-size:11px}
+ .social-links a:hover{padding-inline:3px}
+ .page-index{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:12;gap:0;margin:0;padding:4px 8px;border:1px solid #ffffff30;border-radius:40px;background:var(--ink);color:var(--white);box-shadow:0 8px 30px #0003}
+ .page-index button{width:44px;height:40px;padding:12px}
+ .view-about .page-index{background:var(--ink);color:var(--white)}
+ footer{gap:10px;padding-bottom:84px}
+ .about-aside{display:grid;grid-template-columns:85px 1fr;align-items:center;gap:20px}
+ .about-aside-note{font-size:8px}
+ .about-disciplines{grid-column:1/-1;max-width:none}
+ .about-screen{padding-block:24px;gap:24px}
+ .about-screen h1{font-size:10.2vw}
+ .about-bottom{gap:24px}
+ .about-mark{width:85px}
+ .about-copy p{font-size:14px}
+ .about-copy p+p{font-size:12px}
+ .contact-row{gap:14px}
+ .contact-row>div{font-size:12px}
+ .copy-email{width:30px;height:30px}
+ .contact-row a{gap:8px}
+ .contact-row a svg{width:15px}
+}
+@media(max-width:360px){.contact-row{gap:10px}.contact-row>div{font-size:11px}.copy-email{width:27px;height:27px}.contact-row>svg{width:17px}.name-block .eyebrow{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.orbit-art,.phase-caption,.contact-row{animation:none!important}.orbit-art{will-change:auto}}
